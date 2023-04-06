@@ -1,4 +1,4 @@
-package backjoon.study;
+package backjoon.study.second;
 
 import java.io.*;
 import java.util.*;
