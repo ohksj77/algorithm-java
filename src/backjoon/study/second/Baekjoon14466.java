@@ -1,106 +1,89 @@
 package backjoon.study.second;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Baekjoon14466 {
-    private static int n, k, r;
-    private static boolean[][] visited;
-    private static Point[] cows;
-    private static List<Point>[][] bridges;
-    private static int[] dx = {0, 1, 0, -1};
-    private static int[] dy = {1, 0, -1, 0};
+    private static final int[][] dr = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+    private static int[][][] map;
+    private static int size;
+    private static int[][] cows;
+
     public static void main(String[] args) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        k = Integer.parseInt(st.nextToken());
-        r = Integer.parseInt(st.nextToken());
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
 
-        cows = new Point[k];
-        bridges = new List[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                bridges[i][j] = new ArrayList<>();
-            }
-        }
+        st = new StringTokenizer(br.readLine());
+        size = Integer.parseInt(st.nextToken());
+        int cow = Integer.parseInt(st.nextToken());
+        int command = Integer.parseInt(st.nextToken());
 
-        for (int i = 0; i < r; i++) {
+        map = new int[size][size][5];
+        while (command-- > 0) {
             st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken()) - 1;
-            int b = Integer.parseInt(st.nextToken()) - 1;
-            int c = Integer.parseInt(st.nextToken()) - 1;
-            int d = Integer.parseInt(st.nextToken()) - 1;
+            int startX = Integer.parseInt(st.nextToken()) - 1;
+            int startY = Integer.parseInt(st.nextToken()) - 1;
+            int endX = Integer.parseInt(st.nextToken()) - 1;
+            int endY = Integer.parseInt(st.nextToken()) - 1;
 
-            bridges[a][b].add(new Point(c, d));
-            bridges[c][d].add(new Point(a, b));
-        }
-
-        for (int i = 0; i < k; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken()) - 1;
-            int b = Integer.parseInt(st.nextToken()) - 1;
-            cows[i] = new Point(a, b);
-        }
-
-        bw.write(String.valueOf(run()));
-        bw.flush();
-    }
-
-    private static int run() {
-        int cnt = 0;
-
-        for (int c = 0; c < k; c++) {
-            visited = new boolean[n][n];
-            dfs(cows[c].x, cows[c].y);
-            for (int nc = c; nc < k; nc++) {
-                Point cow = cows[nc];
-                if (!visited[cow.x][cow.y]) {
-                    cnt++;
+            for (int i = 0; i < 4; i++) {
+                int[] dir = dr[i];
+                if (startX + dir[0] == endX && startY + dir[1] == endY) {
+                    map[startX][startY][i] = -1;
+                    map[endX][endY][(i + 2) % 4] = -1;
+                    break;
                 }
             }
         }
-        return cnt;
+
+        cows = new int[cow][2];
+        for (int i = 0; i < cow; i++) {
+            st = new StringTokenizer(br.readLine());
+            int cowX = Integer.parseInt(st.nextToken()) - 1;
+            int cowY = Integer.parseInt(st.nextToken()) - 1;
+            cows[i] = new int[]{cowX, cowY};
+            map[cowX][cowY][4] = i + 1;
+        }
+
+        int sum = 0;
+        for (int i = 0; i < cow; i++) {
+            sum += (cow - 1 - bfs(i));
+        }
+
+        bw.write(Integer.toString(sum / 2));
+        bw.flush();
     }
 
-    private static void dfs(int x, int y) {
-        visited[x][y] = true;
+    private static int bfs(int idx) {
+        boolean[][] visited = new boolean[size][size];
+        visited[cows[idx][0]][cows[idx][1]] = true;
 
-        for (int i = 0; i < 4; i++) {
-            int nx = x + dx[i];
-            int ny = x + dy[i];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(cows[idx]);
+        int visitCnt = 0;
 
-            if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-            if (visited[nx][ny]) continue;
-            if (bridges[x][y].contains(new Point(nx, ny))) continue;
+        while (!queue.isEmpty()) {
+            int[] now = queue.poll();
+            for (int i = 0; i < 4; i++) {
+                int[] dir = dr[i];
+                int mvx = now[0] + dir[0];
+                int mvy = now[1] + dir[1];
 
-            dfs(nx, ny);
+                if (mvx < 0 || mvy < 0 || size <= mvx || size <= mvy || visited[mvx][mvy]) {
+                    continue;
+                }
+                if (map[now[0]][now[1]][i] == -1) {
+                    continue;
+                }
+
+                if (map[mvx][mvy][4] != 0) {
+                    visitCnt++;
+                }
+                visited[mvx][mvy] = true;
+                queue.add(new int[]{mvx, mvy});
+            }
         }
-    }
-
-    private static class Point {
-        private int x;
-        private int y;
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Point point = (Point) o;
-            return x == point.x && y == point.y;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(x, y);
-        }
+        return visitCnt;
     }
 }
