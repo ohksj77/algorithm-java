@@ -1,7 +1,8 @@
 package backjoon.first;
 
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Baekjoon11625 {
 
