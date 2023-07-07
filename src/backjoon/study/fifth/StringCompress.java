@@ -1,7 +1,5 @@
 package backjoon.study.fifth;
 
-import java.util.*;
-
 class StringCompress {
     public int solution(String s) {
         int answer = s.length();
