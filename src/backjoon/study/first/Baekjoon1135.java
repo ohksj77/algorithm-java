@@ -1,7 +1,10 @@
 package backjoon.study.first;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class Baekjoon1135 {
     private static List<Integer>[] tree;
