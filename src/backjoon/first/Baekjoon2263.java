@@ -45,5 +45,4 @@ public class Baekjoon2263 {
         getPreOrder(rootIndex + 1, inEnd, postStart + left, postEnd - 1);
 
     }
-
 }
