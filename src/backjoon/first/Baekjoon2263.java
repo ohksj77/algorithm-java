@@ -3,7 +3,6 @@ package backjoon.first;
 import java.io.*;
 
 public class Baekjoon2263 {
-
     static int n;
     static int[] inOrderIndex, postOrder, inOrder;
     static StringBuilder sb = new StringBuilder();
