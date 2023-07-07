@@ -1,6 +1,7 @@
 package backjoon.study.fifth;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Node implements Comparable<Node> {
 
