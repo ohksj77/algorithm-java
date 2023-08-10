@@ -6,6 +6,7 @@ public class Baekjoon9252 {
     private static int[][] dp;
     private static int n, m;
     private static String inputA, inputB;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -22,7 +23,8 @@ public class Baekjoon9252 {
         while (n != 0 && m != 0) {
             if (inputA.charAt(n - 1) == inputB.charAt(m - 1)) {
                 sb.insert(0, inputA.charAt(n - 1));
-                n--; m--;
+                n--;
+                m--;
             } else if (dp[n][m] == dp[n - 1][m]) {
                 n--;
             } else if (dp[n][m] == dp[n][m - 1]) {
