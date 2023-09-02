@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 
 public class Baekjoon2110 {
     private static int[] list;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,6 +35,7 @@ public class Baekjoon2110 {
         bw.write(String.valueOf(low - 1));
         bw.flush();
     }
+
     private static int numOfInstallable(int distance) {
         int count = 1;
         int last = list[0];
