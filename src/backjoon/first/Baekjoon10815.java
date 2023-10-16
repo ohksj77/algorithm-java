@@ -17,7 +17,7 @@ public class Baekjoon10815 {
         StringTokenizer st2 = new StringTokenizer(br.readLine(), " ");
 
         int[] arr = new int[n];
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st1.nextToken());
         }
         Arrays.sort(arr);
@@ -26,8 +26,7 @@ public class Baekjoon10815 {
             int result = binarySearch(Integer.parseInt(st2.nextToken()), arr);
             if (result != -1) {
                 sb.append("1 ");
-            }
-            else {
+            } else {
                 sb.append("0 ");
             }
         }
@@ -40,15 +39,13 @@ public class Baekjoon10815 {
 
     private static int binarySearch(int target, int[] array) {
         int left = 0, right = array.length - 1, mid;
-        while(left <= right) {
+        while (left <= right) {
             mid = (left + right) / 2;
             if (array[mid] < target) {
                 left = mid + 1;
-            }
-            else if (array[mid] > target) {
+            } else if (array[mid] > target) {
                 right = mid - 1;
-            }
-            else {
+            } else {
                 return mid;
             }
         }

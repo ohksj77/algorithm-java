@@ -40,13 +40,13 @@ public class Baekjoon10816 {
             int mid = (low + high) / 2;
             if (target <= arr[mid]) {
                 high = mid;
-            }
-            else {
+            } else {
                 low = mid + 1;
             }
         }
         return low;
     }
+
     private static int upperBound(int[] arr, int target) {
         int low = 0;
         int high = arr.length;
@@ -55,8 +55,7 @@ public class Baekjoon10816 {
             int mid = (low + high) / 2;
             if (target < arr[mid]) {
                 high = mid;
-            }
-            else {
+            } else {
                 low = mid + 1;
             }
         }

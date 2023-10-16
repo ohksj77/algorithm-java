@@ -12,6 +12,7 @@ public class Baekjoon11559 {
     private static boolean isPop;
     private static int[] dx = {0, 0, -1, 1};
     private static int[] dy = {-1, 1, 0, 0};
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -47,7 +48,7 @@ public class Baekjoon11559 {
                     list.add(new int[]{i, j});
                     visited[i][j] = true;
 
-                    while(!queue.isEmpty()) {
+                    while (!queue.isEmpty()) {
                         Puyo p = queue.poll();
 
                         int curX = p.x;
@@ -62,7 +63,7 @@ public class Baekjoon11559 {
 
                             if (!visited[nx][ny] && map[nx][ny] == curColor) {
                                 queue.add(new Puyo(nx, ny, map[nx][ny]));
-                                list.add(new int[] {nx, ny});
+                                list.add(new int[]{nx, ny});
                                 visited[nx][ny] = true;
                             }
                         }
@@ -81,6 +82,7 @@ public class Baekjoon11559 {
             }
         }
     }
+
     private static void onFloor() {
         for (int j = 0; j < 6; j++) {
             down(j);
@@ -108,6 +110,7 @@ public class Baekjoon11559 {
         int x;
         int y;
         char color;
+
         public Puyo(int x, int y, char color) {
             this.x = x;
             this.y = y;

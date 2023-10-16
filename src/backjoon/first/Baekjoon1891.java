@@ -11,7 +11,7 @@ public class Baekjoon1891 {
     private static String answer = "";
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bw  = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -29,8 +29,7 @@ public class Baekjoon1891 {
         if (0 <= nxny.x && nxny.x < n && 0 <= nxny.y && nxny.y < m) {
             check(0, n, 0, m);
             bw.write(answer);
-        }
-        else bw.write("-1");
+        } else bw.write("-1");
         bw.flush();
 
     }
@@ -43,7 +42,7 @@ public class Baekjoon1891 {
         } else if (n1 <= nxny.x && nxny.x < (n1 + n2) / 2 && m1 <= nxny.y && nxny.y < (m1 + m2) / 2) {
             answer += "2";
             return check(n1, (n1 + n2) / 2, m1, (m1 + m2) / 2);
-        } else if ((n1 + n2) / 2 <= nxny.x && nxny.x < n2 && m1 <= nxny.y && nxny.y < (m1+m2) / 2) {
+        } else if ((n1 + n2) / 2 <= nxny.x && nxny.x < n2 && m1 <= nxny.y && nxny.y < (m1 + m2) / 2) {
             answer += "3";
             return check((n1 + n2) / 2, n2, m1, (m1 + m2) / 2);
         } else {
@@ -67,6 +66,7 @@ public class Baekjoon1891 {
 
     private static class Element {
         long x, y;
+
         public Element(long x, long y) {
             this.x = x;
             this.y = y;

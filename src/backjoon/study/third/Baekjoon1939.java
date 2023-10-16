@@ -6,12 +6,13 @@ import java.util.*;
 public class Baekjoon1939 {
     private static int n, m, a, b, start, end;
     private static List<Bridge>[] list;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
-        m  = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
         list = new List[n + 1];
         for (int i = 0; i < n + 1; i++) list[i] = new ArrayList<>();
@@ -44,7 +45,7 @@ public class Baekjoon1939 {
         q.offer(a);
         visited[a] = true;
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int front = q.poll();
             if (front == b) return true;
 

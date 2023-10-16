@@ -20,16 +20,16 @@ public class Baekjoon11728 {
         int[] res = new int[n + m];
         int idx = 0;
 
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             res[idx++] = Integer.parseInt(arr1[i]);
         }
-        for(int j = 0; j < m; j++) {
+        for (int j = 0; j < m; j++) {
             res[idx++] = Integer.parseInt(arr2[j]);
         }
 
         Arrays.sort(res);
 
-        for(int k = 0; k < n + m; k++) {
+        for (int k = 0; k < n + m; k++) {
             bw.write(res[k] + " ");
         }
 

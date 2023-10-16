@@ -6,7 +6,7 @@ import java.util.*;
 public class Baekjoon1933 {
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bw  = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int n = Integer.parseInt(br.readLine());
@@ -39,7 +39,7 @@ public class Baekjoon1933 {
         List<Building> answer = new ArrayList<>();
         for (int i = 0; i < buildings.size(); i++) {
             Building building = buildings.get(i);
-            if(building.h > 0) {
+            if (building.h > 0) {
                 tree.put(building.h, tree.getOrDefault(building.h, 0) + 1);
             } else {
                 int key = -building.h;

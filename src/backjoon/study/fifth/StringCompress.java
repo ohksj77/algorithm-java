@@ -14,7 +14,7 @@ class StringCompress {
                 }
                 if (prev.equals(sub)) cnt += 1;
                 else {
-                    compressed += (cnt >= 2)? cnt + prev : prev;
+                    compressed += (cnt >= 2) ? cnt + prev : prev;
                     sub = "";
                     for (int k = j; k < j + step; k++) {
                         if (k < s.length()) sub += s.charAt(k);
@@ -23,7 +23,7 @@ class StringCompress {
                     cnt = 1;
                 }
             }
-            compressed += (cnt >= 2)? cnt + prev : prev;
+            compressed += (cnt >= 2) ? cnt + prev : prev;
             answer = Math.min(answer, compressed.length());
         }
         return answer;

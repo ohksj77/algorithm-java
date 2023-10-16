@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class Baekjoon1113 {
     private static Queue<int[]> q = new LinkedList<>();
     private static int n, m, result, min = 10, max, dy[] = {0, 0, 1, -1}, dx[] = {1, -1, 0, 0}, board[][];
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

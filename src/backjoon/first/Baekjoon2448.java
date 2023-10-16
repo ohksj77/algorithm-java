@@ -19,7 +19,12 @@ public class Baekjoon2448 {
 
         makeBoard(0, rows - 1, rows);
 
-        Arrays.stream(board).forEach(i -> {try{bw.write(i);} catch (IOException e) {}});
+        Arrays.stream(board).forEach(i -> {
+            try {
+                bw.write(i);
+            } catch (IOException e) {
+            }
+        });
         bw.flush();
     }
 

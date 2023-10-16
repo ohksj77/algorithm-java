@@ -10,6 +10,7 @@ public class Baekjoon18428 {
     static int[] dx = {0, 0, 1, -1};
     static int[] dy = {1, -1, 0, 0};
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
@@ -46,6 +47,7 @@ public class Baekjoon18428 {
             }
         }
     }
+
     static void bfs() throws IOException {
         Queue<int[]> q = new LinkedList<>();
         char[][] copyMap = new char[n][n];
@@ -63,7 +65,7 @@ public class Baekjoon18428 {
                 }
             }
         }
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int[] now = q.poll();
             int x = now[0];
             int y = now[1];
@@ -72,7 +74,7 @@ public class Baekjoon18428 {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
 
-                while(0 <= nx && nx < n && 0 <= ny && ny < n) {
+                while (0 <= nx && nx < n && 0 <= ny && ny < n) {
                     if (copyMap[nx][ny] != '0') {
                         check[nx][ny] = true;
                         nx += dx[i];
@@ -89,6 +91,7 @@ public class Baekjoon18428 {
             System.exit(0);
         }
     }
+
     static boolean catchStudent(boolean[][] check) {
         for (int[] s : student) {
             if (check[s[0]][s[1]] == true) {

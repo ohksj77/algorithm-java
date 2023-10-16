@@ -22,7 +22,7 @@ public class Baekjoon2261 {
     };
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bw  = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         elements = new Element[n];
@@ -87,8 +87,7 @@ public class Baekjoon2261 {
                 yDist = list.get(i).y - list.get(j).y;
                 if (yDist * yDist < minDist) {
                     minDist = Math.min(dist(list.get(i), list.get(j)), minDist);
-                }
-                else {
+                } else {
                     break;
                 }
             }

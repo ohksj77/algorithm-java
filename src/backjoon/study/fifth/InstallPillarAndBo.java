@@ -61,8 +61,7 @@ public class InstallPillarAndBo {
                     }
                 }
                 if (!check) return false;
-            }
-            else if (stuff == 1) {
+            } else if (stuff == 1) {
                 boolean check = false;
                 boolean left = false;
                 boolean right = false;

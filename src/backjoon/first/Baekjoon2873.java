@@ -34,7 +34,7 @@ public class Baekjoon2873 {
 
         int tr = 0, tc = 0;
         int min = 1000;
-        for(int i = 0; i < r; i++) {
+        for (int i = 0; i < r; i++) {
             board[i] = br.readLine().split(" ");
             for (int j = 0; j < c; j++) {
                 int cur = Integer.parseInt(board[i][j]);
@@ -57,7 +57,7 @@ public class Baekjoon2873 {
 
         for (int i = 0; i < len; i++) {
             sb.append('U').append('R').append('D');
-            if (i != len-1)  sb.append('R');
+            if (i != len - 1) sb.append('R');
         }
 
         len = (r - tr) / 2;
@@ -66,7 +66,7 @@ public class Baekjoon2873 {
 
         for (int i = 0; i < len; i++) {
             leftDownRight(c);
-            if (i != len-1) sb.append('D');
+            if (i != len - 1) sb.append('D');
         }
 
         bw.write(String.valueOf(sb));

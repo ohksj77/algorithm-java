@@ -10,6 +10,7 @@ public class Baekjoon16988 {
     private static int[] dx = {0, 0, 1, -1};
     private static int[] dy = {1, -1, 0, 0};
     private static List<BadukDol> list = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

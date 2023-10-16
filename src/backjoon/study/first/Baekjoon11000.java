@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 public class Baekjoon11000 {
     private static Lecture[] lectures;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,6 +35,7 @@ public class Baekjoon11000 {
         bw.write(String.valueOf(queue.size()));
         bw.flush();
     }
+
     private static class Lecture {
         int start;
         int end;

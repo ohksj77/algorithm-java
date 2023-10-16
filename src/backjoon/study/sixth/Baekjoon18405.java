@@ -9,6 +9,7 @@ public class Baekjoon18405 {
     static int[] dx = {0, 0, 1, -1};
     static int[] dy = {1, -1, 0, 0};
     static int n, k, s, x, y;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -45,7 +46,7 @@ public class Baekjoon18405 {
     }
 
     static void bfs() {
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int[] now = q.poll();
             if (now[3] == s) {
                 continue;
@@ -54,8 +55,8 @@ public class Baekjoon18405 {
                 int nx = now[0] + dx[i];
                 int ny = now[1] + dy[i];
                 if (0 <= nx && nx < n && 0 <= ny && ny < n && board[nx][ny] == 0) {
-                        board[nx][ny] = now[2];
-                        q.add(new int[]{nx, ny, now[2], now[3] + 1});
+                    board[nx][ny] = now[2];
+                    q.add(new int[]{nx, ny, now[2], now[3] + 1});
 
                 }
             }

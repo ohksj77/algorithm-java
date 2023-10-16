@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 public class Baekjoon1915 {
     private static int[][] dp;
     private static char[][] board;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

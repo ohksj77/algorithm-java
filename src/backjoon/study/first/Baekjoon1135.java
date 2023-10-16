@@ -10,6 +10,7 @@ public class Baekjoon1135 {
     private static List<Integer>[] tree;
     private static int[] dp;
     private static int n;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,6 +30,7 @@ public class Baekjoon1135 {
         bw.write(String.valueOf(dfs(0)));
         bw.flush();
     }
+
     private static int dfs(int cur) {
         int cnt = 0, max = 0;
         PriorityQueue<int[]> q = new PriorityQueue<>((o1, o2) -> o2[1] - o1[1]);

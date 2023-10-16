@@ -15,6 +15,7 @@ public class Baekjoon17135 {
     private static List<int[]> list = new ArrayList<>();
     private static int[] archer = new int[3];
     private static int result;
+
     public static void main(String[] args) throws Exception {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,7 +32,7 @@ public class Baekjoon17135 {
             for (int j = 0; j < m; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
                 if (map[i][j] == 1) {
-                    list.add(new int[] {i, j});
+                    list.add(new int[]{i, j});
                 }
             }
         }
@@ -80,7 +81,7 @@ public class Baekjoon17135 {
                         }
                     }
                     if (!flag) {
-                        targets.add(new int[] {target.x, target.y});
+                        targets.add(new int[]{target.x, target.y});
                     }
                 }
             }
@@ -107,7 +108,7 @@ public class Baekjoon17135 {
         List<int[]> temp = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             int[] cur = list.get(i);
-            temp.add(new int[] {cur[0], cur[1]});
+            temp.add(new int[]{cur[0], cur[1]});
         }
         return temp;
     }
@@ -116,6 +117,7 @@ public class Baekjoon17135 {
         int x;
         int y;
         int d;
+
         public Monster(int x, int y, int d) {
             this.x = x;
             this.y = y;

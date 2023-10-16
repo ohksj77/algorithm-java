@@ -7,6 +7,7 @@ public class Baekjoon15684 {
     private static int n, m, h, answer;
     private static int[][] map;
     private static boolean finish = false;
+
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -62,7 +63,7 @@ public class Baekjoon15684 {
         for (int i = 1; i <= n; i++) {
             int x = 1, y = i;
             for (int j = 0; j < h; j++) {
-                if (map[x][y] == 1){
+                if (map[x][y] == 1) {
                     y++;
                 } else if (map[x][y] == 2) {
                     y--;

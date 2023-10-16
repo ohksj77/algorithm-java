@@ -26,8 +26,7 @@ public class Baekjoon1201 {
 
         if (n < m + k - 1 || n > m * k) {
             bw.write("-1");
-        }
-        else{
+        } else {
             bw.write(String.valueOf(sb.append(ans(n, m, k).stream().map(String::valueOf).collect(Collectors.joining(" ")))));
         }
         bw.flush();
@@ -39,7 +38,7 @@ public class Baekjoon1201 {
         List<Integer> arr = IntStream.iterate(k, i -> i > 0, i -> i - 1).boxed().collect(toList());
         n -= k;
         m -= 1;
-        while(m != 0) {
+        while (m != 0) {
             int nm = n / m;
             int tmpK = k;
             IntStream.iterate(tmpK + nm, i -> i > tmpK, i -> i - 1).forEach(arr::add);

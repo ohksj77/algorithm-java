@@ -19,7 +19,7 @@ public class Baekjoon16236 {
         map = new int[N][N];
         int[] cur = null;
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());

@@ -35,13 +35,11 @@ public class Baekjoon1780 {
     public static void partition(int row, int col, int size) {
 
         if (check(row, col, size)) {
-            if(board[row][col] == -1) {
+            if (board[row][col] == -1) {
                 minus++;
-            }
-            else if(board[row][col] == 0) {
+            } else if (board[row][col] == 0) {
                 zero++;
-            }
-            else {
+            } else {
                 one++;
             }
 

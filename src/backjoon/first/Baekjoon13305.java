@@ -19,7 +19,7 @@ public class Baekjoon13305 {
         st = new StringTokenizer(br.readLine());
         tmp = Long.parseLong(st.nextToken());
 
-        for(int i = 1; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             sum = sum + tmp * arr[i - 1];
             x = Long.parseLong(st.nextToken());
             tmp = tmp < x ? tmp : x;
