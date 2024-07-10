@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
-class 정리정돈을_좋아하는_K씨 {
+class Day2 {
     public static void main(String[] args) throws Exception {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
