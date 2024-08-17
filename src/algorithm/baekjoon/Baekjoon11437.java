@@ -11,8 +11,9 @@ import java.util.StringTokenizer;
 
 public class Baekjoon11437 {
 
-    static List<Integer>[] list;
-    static int[] parent, depth;
+    private static List<Integer>[] list;
+    private static int[] parent;
+    private static int[] depth;
 
     public static void main(String[] args) throws IOException {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
