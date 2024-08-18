@@ -11,13 +11,12 @@ import java.util.List;
 public class 코드트리_사내_메신저 {
 
     private static final List<List<Integer>> ADJACENT = new ArrayList<>();
-    private static int n;
 
     public static void main(String[] args) throws Exception {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        n = Integer.parseInt(br.readLine());
+        final int n = Integer.parseInt(br.readLine());
         final String[] input = br.readLine().split(" ");
 
         for (int i = 0; i < n; i++) {
