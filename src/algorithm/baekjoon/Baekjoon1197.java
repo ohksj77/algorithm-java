@@ -4,93 +4,95 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Baekjoon1197 {
-    private static int[] parent;
+
+    private static final PriorityQueue<Edge> pq = new PriorityQueue<>();
+    private static int[] arr;
+    private static int V;
+    private static int E;
+    private static int sum = 0;
+    private static int edgeCount = 0;
 
     public static void main(String[] args) throws IOException {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        final BufferedWriter bw = new BufferedWriter(new java.io.OutputStreamWriter(System.out));
+        final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        final int v = Integer.parseInt(st.nextToken());
-        final int e = Integer.parseInt(st.nextToken());
+        V = Integer.parseInt(st.nextToken());
+        E = Integer.parseInt(st.nextToken());
+        arr = new int[V + 1];
 
-        final Queue<Node> nodes = new PriorityQueue<>();
+        for (int i = 1; i <= V; i++) {
+            arr[i] = i;
+        }
 
-        for (int i = 0; i < e; i++) {
+        for (int i = 0; i < E; i++) {
             st = new StringTokenizer(br.readLine());
+            final int s = Integer.parseInt(st.nextToken());
+            final int e = Integer.parseInt(st.nextToken());
+            final int w = Integer.parseInt(st.nextToken());
 
-            final int a = Integer.parseInt(st.nextToken());
-            final int b = Integer.parseInt(st.nextToken());
-            final int val = Integer.parseInt(st.nextToken());
-
-            nodes.add(new Node(a, b, val));
+            pq.offer(new Edge(s, e, w));
         }
 
-        int sum = 0;
-        parent = new int[v + 1];
-
-        for (int i = 1; i <= v; i++) {
-            parent[i] = i;
-        }
-
-        while (!nodes.isEmpty()) {
-            final Node node = nodes.poll();
-            final int a = node.a;
-            final int b = node.b;
-            final int val = node.val;
-
-            if (find(a) == find(b)) {
-                continue;
-            }
-
-            sum += val;
-            union(a, b);
-        }
-
+        kruskal();
         bw.write(Integer.toString(sum));
         bw.flush();
     }
 
+    private static void kruskal() {
+        while (!pq.isEmpty()) {
+            final Edge edge = pq.poll();
+            if (find(edge.s) == find(edge.e)) {
+                continue;
+            }
+            union(edge.s, edge.e);
+            sum += edge.w;
+            edgeCount++;
+            if (edgeCount > V - 1) {
+                break;
+            }
+        }
+    }
+
+    private static void union(final int a, final int b) {
+        int A = find(a);
+        int B = find(b);
+        if (A > B) {
+            arr[A] = B;
+            return;
+        }
+        arr[B] = A;
+    }
+
     private static int find(final int a) {
-        if (parent[a] == a) {
+        if (arr[a] == a) {
             return a;
         }
-        return find(parent[a]);
+        final int rep = find(arr[a]);
+        arr[a] = rep;
+        return rep;
     }
 
-    private static void union(int a, int b) {
-        final int findA = find(a);
-        final int findB = find(b);
+    private static class Edge implements Comparable<Edge> {
+        public final int s;
+        public final int e;
+        public final int w;
 
-        if (findA != findB) {
-            parent[findB] = findA;
-        }
-    }
-
-    private static class Node implements Comparable<Node> {
-        private final int a;
-        private final int b;
-        private final int val;
-
-        public Node(final int a, final int b, final int val) {
-            this.a = a;
-            this.b = b;
-            this.val = val;
+        public Edge(final int s, final int e, final int w) {
+            this.s = s;
+            this.e = e;
+            this.w = w;
         }
 
         @Override
-        public int compareTo(final Node a) {
-            final int val = a.val;
-
-            if (this.val > val) {
-                return 1;
-            }
-            return -1;
+        public int compareTo(Edge edge) {
+            return Integer.compare(this.w, edge.w);
         }
     }
 }
