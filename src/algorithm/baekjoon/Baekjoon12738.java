@@ -16,13 +16,10 @@ public class Baekjoon12738 {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Integer.parseInt(br.readLine());
-        final List<Integer> list = new ArrayList<>();
+        br.readLine();
 
-        Arrays.stream(br.readLine().split(" "))
-                .mapToInt(Integer::parseInt)
-                .map(i -> i + 1000000000)
-                .forEach(search(list));
+        final List<Integer> list = new ArrayList<>();
+        Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).forEach(search(list));
 
         bw.write(Integer.toString(list.size()));
         bw.flush();
