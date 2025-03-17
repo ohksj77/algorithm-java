@@ -1,0 +1,78 @@
+import java.util.*;
+import java.time.*;
+
+class Solution {
+
+    private int[] fees;
+
+    public int[] solution(int[] fees, String[] records) {
+        this.fees = fees;
+
+        Map<String, Long> carTimes = new HashMap<>();
+        Map<String, LocalTime> inTimes = new HashMap<>();
+
+        for (String record : records) {
+            String[] values = record.split(" ");
+            String[] timeValues = values[0].split(":");
+            LocalTime time = LocalTime.of(Integer.parseInt(timeValues[0]), Integer.parseInt(timeValues[1]));
+
+            String carNo = values[1];
+            String action = values[2];
+
+            if (action.equals("IN")) {
+                inTimes.put(carNo, time);
+            } else if (action.equals("OUT")) {
+                LocalTime inTime = inTimes.get(carNo);
+                long duration = Duration.between(inTime, time).toMinutes();
+                carTimes.put(carNo, carTimes.getOrDefault(carNo, 0L) + duration);
+                inTimes.remove(carNo);
+            }
+        }
+
+        for (Map.Entry<String, LocalTime> entry : inTimes.entrySet()) {
+            String carNo = entry.getKey();
+            LocalTime inTime = entry.getValue();
+            long duration = Duration.between(inTime, LocalTime.of(23, 59)).toMinutes();
+            carTimes.put(carNo, carTimes.getOrDefault(carNo, 0L) + duration);
+        }
+
+        List<Car> cars = new ArrayList<>();
+        for (Map.Entry<String, Long> entry : carTimes.entrySet()) {
+            String carNo = entry.getKey();
+            long totalMinutes = entry.getValue();
+            int fee = calculateFee(totalMinutes);
+            cars.add(new Car(fee, carNo));
+        }
+
+        Collections.sort(cars);
+
+        int[] answer = new int[cars.size()];
+        for (int i = 0; i < cars.size(); i++) {
+            answer[i] = cars.get(i).fee;
+        }
+
+        return answer;
+    }
+
+    private int calculateFee(long minutes) {
+        if (minutes <= fees[0]) {
+            return fees[1];
+        }
+        return fees[1] + (int)Math.ceil((minutes - fees[0]) / (double)fees[2]) * fees[3];
+    }
+
+    private static class Car implements Comparable<Car> {
+        private final int fee;
+        private final String no;
+
+        public Car(int fee, String no) {
+            this.fee = fee;
+            this.no = no;
+        }
+
+        @Override
+        public int compareTo(Car other) {
+            return this.no.compareTo(other.no);
+        }
+    }
+}
